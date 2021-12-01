@@ -1,0 +1,45 @@
+#total{
+	width: 400px;
+	height: 500px;
+	border: solid black 1px;
+	position: relative;
+	margin: auto;
+	overflow: hidden;
+}
+#block{
+	position: absolute;
+	width: 50px;
+	height: 500px;
+	left: 400px;
+	background-color: black;
+	animation: run 2s infinite linear;
+}
+#whiteblock{
+	position: absolute;
+	width: 50px;
+	height: 150px;
+	left: 400px;
+	background-color: white;
+	animation: run 2s infinite linear;
+}
+#bird{
+	border-radius: 50%;
+	width: 20px;
+	height: 20px;
+	background-color: red;
+	position: absolute;
+	top: 100px;
+	left: 50px;
+	background-image: url(https://i.pinimg.com/236x/6a/1e/98/6a1e9846c09426a4b2404dd94686fe95.jpg);
+}
+@keyframes run{
+	0%{
+		left: 400px;
+	}
+	100%{
+		left: -50px;
+	}
+}
+*{
+	box-sizing: border-box;
+}
