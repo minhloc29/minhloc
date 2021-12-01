@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html onclick="jump()">
+<head>
+<meta charset="utf-8">
+<title>Flabby bird</title>
+<link rel="stylesheet" href="decomyweb.css">
+<body>
+	<div id="total">
+		<div id="block"></div>
+		<div id="whiteblock"></div>
+		<div id="bird"></div>
+	</div>
+<script type="text/javascript">
+	var x = document.getElementById('whiteblock');
+	var bird = document.getElementById('bird');
+	var block = document.getElementById('block');
+	var score = 0;
+	var jumping = 0;
+	x.addEventListener('animationiteration', ()=>{
+		var random = Math.random()*300 + 20;
+		x.style.top = random + 'px';
+		score ++;
+	});
+	setInterval(function(){
+		var birdTop = parseInt(window.getComputedStyle(bird).getPropertyValue('top'));
+		if(jumping == 0){
+		bird.style.top = (birdTop+3) + 'px';
+		}
+		var blockLeft = parseInt(window.getComputedStyle(block).getPropertyValue('left'));
+		var numwhite = parseInt(window.getComputedStyle(x).getPropertyValue('top'));
+		var birdTop = parseInt(window.getComputedStyle(bird).getPropertyValue('top'));
+		if((birdTop > 480 || birdTop == 0) || ( (blockLeft <= 70) && (blockLeft >= 0) && ( (birdTop <= numwhite) || (birdTop >= numwhite + 132) ) ) ){
+			alert("Game over, your score is: " + score);
+			bird.style.top = 100 + 'px';
+			score = 0;
+		}
+	}, 10);
+	function jump(){
+		jumping = 1;
+		var count = 0;
+		var xx = setInterval(upup, 10);
+		function upup(){
+			var birdTop = parseInt(window.getComputedStyle(bird).getPropertyValue('top'));
+			bird.style.top = (birdTop-5) + 'px';
+			count ++;
+			if(count == 20){
+				clearInterval(xx);
+				jumping = 0;
+			}
+		}
+	}
+</script>
+</body>
+</html>
